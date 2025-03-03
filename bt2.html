@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 2</title>
+</head>
+
+<body>
+    <h2>DANH SÁCH SẢN PHẨM</h2>
+    <input type="text" name="" id="user" placeholder="Nhập tên sản phẩm">
+    <input type="text" name="" id="price" placeholder="Nhập giá sản phẩm">
+    <button onclick="ketqua()">THÊM SẢN PHẨM</button>
+    <hr>
+
+    <div id="hienthi"></div>
+
+    <script>
+        function ketqua() {
+            var ten = document.getElementById('user').value;
+            var gia = document.getElementById('price').value;
+            var hienthiketqua = `<h2>Tên sản phẩm: <span> ` + ten + ` </span></h2>
+    <h2> Giá sản phẩm: <span> ` + gia + ` </span></h2>`;
+           document.getElementById("hienthi").innerHTML += hienthiketqua;
+        }
+
+    </script>
+
+</body>
+
+</html>

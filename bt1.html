@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEWORK</title>
+</head>
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    table {
+        /* margin: 12px 12px; */
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid violet;
+    }
+
+    td,
+    th {
+        /* padding: 4px; */
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: rgb(219, 231, 231);
+    }
+
+    button {
+        cursor: pointer;
+        background-color: rgb(163, 163, 222);
+    }
+</style>
+
+<body>
+    <div class="infomation--container">
+        <span>Nhập họ tên sinh viên: </span>
+        <input type="text" name="" id="name" placeholder="Nhập họ tên.... ">
+        <span>Nhập tuổi sinh viên: </span>
+        <input type="text" name="" id="age" placeholder="Nhập tuổi.... ">
+        <span>Nhập mã sinh viên: </span>
+        <input type="text" name="" id="identityCode" placeholder="Nhập mã sinh viên.... ">
+        <span>Nhập email sinh viên: </span>
+        <input type="text" name="" id="email" placeholder="Nhập email sinh viên.... ">
+        <button onclick="addStudent()">Thêm sinh viên</button>
+    </div>
+
+    <div>
+        <table>
+            <h2>DANH SÁCH SINH VIÊN</h2>
+            <tr>
+                <th>Số thứ tự</th>
+                <th>Họ tên</th>
+                <th>Tuổi</th>
+                <th>Mã sinh viên</th>
+                <th>Email</th>
+            </tr>
+
+            <tbody id="studentTable"></tbody>
+        </table>
+
+        <table>
+            <h2>DANH SÁCH SINH VIÊN TUỔI DƯỚI 20</h2>
+            <tr>
+                <th>Số thứ tự</th>
+                <th>Họ tên</th>
+                <th>Tuổi</th>
+                <th>Mã sinh viên</th>
+                <th>Email</th>
+            </tr>
+
+            <tbody id="studentTable2"></tbody>
+        </table>
+
+        <table>
+            <h2>DANH SÁCH SINH VIÊN CO identityCode</h2>
+            <tr>
+                <th>Số thứ tự</th>
+                <th>Họ tên</th>
+                <th>Tuổi</th>
+                <th>Mã sinh viên</th>
+                <th>Email</th>
+            </tr>
+
+            <tbody id="studentTable3"></tbody>
+        </table>
+    </div>
+
+
+    <script>
+        var DSSV = [];
+
+        function addStudent() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var masv = document.getElementById("identityCode").value;
+            var email = document.getElementById("email").value;
+
+            const sinhvien = [name, age, masv, email];
+
+            DSSV.push(sinhvien);
+
+            var dssv = "";
+            for (let i = 1; i < DSSV.length; i++) {
+                dssv += `<tr>
+                <td>`+ i + `</td>
+                <td>`+ DSSV[i][0] + `</td>
+                <td>`+ DSSV[i][1] + `</td>
+                <td>`+ DSSV[i][2] + `</td>
+                <td>`+ DSSV[i][3] + `</td>
+                </tr>`;
+            }
+            document.getElementById('studentTable').innerHTML = dssv;
+
+
+            var dssv2="";
+            for (let i = 0; i < DSSV.length; i++) {
+                if (DSSV[i][1] >= 20){
+                    dssv2 += `<tr>
+                <td>`+ i + `</td>
+                <td>`+ DSSV[i][0] + `</td>
+                <td>`+ DSSV[i][1] + `</td>
+                <td>`+ DSSV[i][2] + `</td>
+                <td>`+ DSSV[i][3] + `</td>
+                </tr>`;
+                }  
+            }
+            document.getElementById("studentTable2").innerHTML = dssv2;
+
+            var dssv3="";
+            for (let i = 0; i < DSSV.length; i++) {
+                if (DSSV[i][2] != ""){
+                    dssv3 += `<tr>
+                <td>`+ i + `</td>
+                <td>`+ DSSV[i][0] + `</td>
+                <td>`+ DSSV[i][1] + `</td>
+                <td>`+ DSSV[i][2] + `</td>
+                <td>`+ DSSV[i][3] + `</td>
+                </tr>`;
+                }  
+            }
+            document.getElementById("studentTable3").innerHTML = dssv3;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
